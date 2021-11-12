@@ -11,7 +11,7 @@
         <Authors>Daniel Duggan, Ryan Hanson</Authors>
         <Description>.NET Standard library which implements Cobalt Strike's External C2 specification (revision 0.1).  Controller Package.</Description>
         <PackageProjectUrl>https://www.cobaltstrike.com/downloads/externalc2spec.pdf</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/rasta-mouse/ExternalC2</RepositoryUrl>
+        <RepositoryUrl>https://github.com/rasta-mouse/ExternalC2.NET</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
