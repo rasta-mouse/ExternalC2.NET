@@ -1,11 +1,11 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 
-using ExternalC2.Base;
+using ExternalC2.NET.Base;
 
-namespace ExternalC2.Controller
+namespace ExternalC2.NET.Controller
 {
-    public interface IBeaconController
+    public interface ISessionController
     {
         /// <summary>
         /// Configure the connection options for this controller

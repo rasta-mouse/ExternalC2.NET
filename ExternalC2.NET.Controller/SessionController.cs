@@ -4,29 +4,29 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 
-using ExternalC2.Base;
+using ExternalC2.NET.Base;
 
-namespace ExternalC2.Controller
+namespace ExternalC2.NET.Controller
 {
-    public class BeaconController : BaseConnector, IBeaconController
+    public class SessionController : BaseConnector, ISessionController
     {
         protected override Stream Stream { get; set; }
-        
-        public IPAddress Server { get; private set; }
-        public int Port { get; private set; }
-        public int Block { get; private set; }
+
+        private IPAddress _server;
+        private int _port;
+        private int _block;
 
         public void Configure(IPAddress server, int port = 2222, int block = 100)
         {
-            Server = server;
-            Port = port;
-            Block = block;
+            _server = server;
+            _port = port;
+            _block = block;
         }
 
         public async Task<bool> Connect()
         {
             var tcpClient = new TcpClient();
-            await tcpClient.ConnectAsync(Server, Port);
+            await tcpClient.ConnectAsync(_server, _port);
 
             if (tcpClient.Connected)
                 Stream = tcpClient.GetStream();
@@ -51,7 +51,7 @@ namespace ExternalC2.Controller
             }
 
             await WriteFrame(C2Frame.Generate("pipename", pipeName));
-            await WriteFrame(C2Frame.Generate("block", $"{Block}"));
+            await WriteFrame(C2Frame.Generate("block", $"{_block}"));
             await WriteFrame(C2Frame.Generate("go"));
 
             var frame = await ReadFrame();

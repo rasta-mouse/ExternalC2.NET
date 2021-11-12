@@ -2,7 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 
-namespace ExternalC2.Base
+namespace ExternalC2.NET.Base
 {
     public abstract class BaseConnector
     {
@@ -20,22 +20,21 @@ namespace ExternalC2.Base
 
             var expectedLength = BitConverter.ToInt32(lengthBuf, 0);
 
-            // now read that length
-            // the previous read consumes the 4 bytes from the stream
-            // had issues reading in a single chunk
-            // so read in smaller increments
-            
+            // keep reading until we've got all the data
             var totalRead = 0;
             using var ms = new MemoryStream();
-
             do
             {
-                var buf = new byte[1024];
-                read = await Stream.ReadAsync(buf, 0, 1024);
+                var remainingBytes = expectedLength - totalRead;
+                if (remainingBytes == 0)
+                    break;
+                
+                var buf = new byte[remainingBytes];
+                read = await Stream.ReadAsync(buf, 0, remainingBytes);
                 await ms.WriteAsync(buf, 0, read);
                 totalRead += read;
-                
-            } while (totalRead < expectedLength);
+            }
+            while (totalRead < expectedLength);
 
             return new C2Frame(lengthBuf, ms.ToArray());
         }

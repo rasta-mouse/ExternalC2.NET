@@ -1,4 +1,4 @@
-﻿namespace ExternalC2.Base
+﻿namespace ExternalC2.NET.Base
 {
     public enum Architecture
     {

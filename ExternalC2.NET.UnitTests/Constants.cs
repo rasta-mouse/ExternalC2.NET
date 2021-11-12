@@ -1,4 +1,4 @@
-﻿namespace ExternalC2.UnitTests
+﻿namespace ExternalC2.NET.UnitTests
 {
     public class Constants
     {

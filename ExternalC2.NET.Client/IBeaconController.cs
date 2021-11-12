@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using ExternalC2.Base;
+using ExternalC2.NET.Base;
 
-namespace ExternalC2.Client
+namespace ExternalC2.NET.Client
 {
     public interface IBeaconController
     {

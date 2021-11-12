@@ -21,8 +21,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ExternalC2.Client\ExternalC2.Client.csproj" />
-      <ProjectReference Include="..\ExternalC2.Controller\ExternalC2.Controller.csproj" />
+      <ProjectReference Include="..\ExternalC2.NET.Client\ExternalC2.NET.Client.csproj" />
+      <ProjectReference Include="..\ExternalC2.NET.Controller\ExternalC2.NET.Controller.csproj" />
     </ItemGroup>
 
 </Project>

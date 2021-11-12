@@ -7,15 +7,11 @@
         <LangVersion>10</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageVersion>0.1</PackageVersion>
-        <Title>External C2</Title>
+        <Title>ExternalC2.NET</Title>
         <Authors>Daniel Duggan, Ryan Hanson</Authors>
-        <Description>.NET Standard library which implements Cobalt Strike's External C2 specification (revision	0.1).</Description>
+        <Description>.NET Standard library which implements Cobalt Strike's External C2 specification (revision 0.1).</Description>
         <PackageProjectUrl>https://www.cobaltstrike.com/downloads/externalc2spec.pdf</PackageProjectUrl>
         <RepositoryUrl>https://github.com/rasta-mouse/ExternalC2</RepositoryUrl>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\ExternalC2.Base\ExternalC2.Base.csproj" />
-    </ItemGroup>
 
 </Project>

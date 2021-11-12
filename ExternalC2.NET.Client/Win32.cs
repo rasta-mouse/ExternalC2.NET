@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace ExternalC2.Client
+namespace ExternalC2.NET.Client
 {
     internal static class Win32
     {
